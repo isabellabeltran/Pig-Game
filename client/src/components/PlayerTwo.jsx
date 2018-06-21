@@ -1,10 +1,11 @@
 import React, { Component } from 'react'; 
 
-
 export default class PlayerTwo extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+
+    }
   }
 
   /**
@@ -13,20 +14,18 @@ export default class PlayerTwo extends Component {
    * accumulated score after hold 
    */
 
-
   render() {
-    const { currentScore, currentPlayer, totalScore } = this.props; 
+    const { currentPlayer, currentScoreTwo, totalScoreTwo } = this.props; 
     return(
       <div>
-      <div>
-          <h1>Player 2</h1>
-      </div>
-      <div className="totalScore">
-        {totalScore}
-      </div>
-      <div className="currentScore">
-        {currentScore}
-      </div>  
+        <div>
+          <div className="totalScore">
+            {totalScoreTwo}
+          </div>
+          <div className="currentScore">
+            {currentScoreTwo}
+          </div>  
+        </div>
       </div> 
     ) 
   }

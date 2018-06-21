@@ -1,53 +1,134 @@
 import React, { Component } from 'react';
 import Dice from './components/Dice'; 
-import PlayerOne from './components/PlayerOne'; 
-import PlayerTwo from './components/PlayerTwo';
+import Player from './components/Player'; 
+import PlayerTwo from './components/PlayerTwo'; 
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentScore: 0,
-      totalScore: 0, 
+      currentScoreOne: 0,
+      totalScoreOne: 0, 
       currentPlayer: 'player1',
-      winner: false
+      winner: false,
+      currentScoreTwo: 0,
+      totalScoreTwo: 0,
+      playerWinner: ''
     }
   }
 
-  handleRollDice = (newDice) => {
-    // if (newDice !== 1) {
+  handleRollDice = (newDice) => { 
+    if (this.state.totalScoreOne >= 20) {
       this.setState({
-        currentScore: this.state.currentScore + newDice
-      });
-    // } else {
-    //   this.setState({
-    //     currentPlayer: 'player2'
-    //   })
-    // }
+        winner: true
+      })
+      alert('Player 1 is the winner!!!')
+    } else if (this.state.totalScoreTwo >= 20 ) {
+      this.setState({
+        winner: true
+      })
+      alert('Player 2 is the winner!!!')
+    } else {
+      if (this.state.currentPlayer === 'player1' && this.state.winner === false) {
+        // if (this.state.totalScoreOne >= 20) {
+        //   this.setState({
+        //     winner: true,
+        //     playerWinner: 'player1'
+        //   }); 
+        //   alert('Player 1 is the winner'); 
+        // } else {
+          if (newDice !== 1) {
+            this.setState({
+              currentScoreOne: this.state.currentScoreOne + newDice
+            });
+          } else {
+            this.setState({
+              currentPlayer: 'player2',
+              currentScoreOne: 0 
+            });
+          }
+        // }
+      // } else if (this.state.currentPlayer === 'player2' && this.state.winner === false) {
+        // if (this.state.totalScoreTwo >= 20) {
+        //   this.setState({
+        //     winner: true,
+        //     playerWinner: 'player2'
+        //   }); 
+        //   alert('Player 2 is the winner'); 
+        } else {
+          if (newDice !== 1) {
+            this.setState({
+              currentScoreTwo: this.state.currentScoreTwo + newDice
+            });
+          } else {
+            this.setState({
+              currentPlayer: 'player1', 
+              currentScoreTwo: 0 
+            });
+          }
+        }
+    } 
   }
 
   holdCurrentScore = () => {
     //It's next player's turn 
-    this.setState({
-      totalScore: this.state.totalScore + this.state.currentScore,
-      currentScore: 0
-    }); 
+    if (this.state.currentPlayer === 'player1') {
+      if (this.state.currentScoreOne >= 20 || this.state.totalScoreOne >= 20 ) {
+        this.setState({
+          winner: true
+        }); 
+        alert('We have a winner'); 
+      } else {
+        this.setState({
+          totalScoreOne: this.state.totalScoreOne + this.state.currentScoreOne,
+          currentScoreOne: 0,
+          currentPlayer: 'player2'
+        }); 
+      }
 
+    } else if (this.state.currentPlayer === 'player2') {
+      if (this.state.currentScoreTwo >= 20 || this.state.totalScoreTwo >= 20 ) {
+        this.setState({
+          winner: true
+        }); 
+        alert('We have a winner'); 
+      } else {
+        this.setState({
+          totalScoreTwo: this.state.totalScoreTwo + this.state.currentScoreTwo,
+          currentScoreTwo: 0,
+          currentPlayer: 'player1'
+        }); 
+      }
+    }
   } 
 
+  createNewGame = () => {
+    this.setState({
+      currentScoreOne: 0,
+      totalScoreOne: 0, 
+      currentPlayer: 'player1',
+      winner: false,
+      currentScoreTwo: 0,
+      totalScoreTwo: 0,
+      playerWinner: ''
+    });
+  }
+
   render() {
-    const { currentScore, currentPlayer, totalScore } = this.state; 
+    const { currentPlayer, currentScoreOne, totalScoreOne, totalScoreTwo, currentScoreTwo} = this.state; 
     return (
       <div className="App">
 
         <div className="gameContainer">
 
           <div className="player-1-panel">
-          <PlayerOne currentScore={currentScore} totalScore={totalScore} currentPlayer={currentPlayer}/>
+          <h1 className="player-header">Player 1</h1>
+          <Player currentScoreOne={currentScoreOne} totalScoreOne={totalScoreOne} currentPlayer={currentPlayer} />
           </div>
           <div className="player-2-panel">
-          <PlayerTwo currentScore={currentScore} totalScore={totalScore} currentPlayer={currentPlayer} />
+          <h1 className="player-header">Player 2</h1>
+          <PlayerTwo currentScoreTwo={currentScoreTwo} totalScoreTwo={totalScoreTwo} currentPlayer={currentPlayer} />
           </div>
 
           {
@@ -59,8 +140,8 @@ class App extends Component {
           </div>
           }
 
-          <div className="newGame">
-          <h3>New Game</h3>
+          <div onClick={this.createNewGame} className="newGame">
+          <h3>NEW GAME</h3>
           </div>
 
           <div onClick={this.holdCurrentScore} className="holdSum">
