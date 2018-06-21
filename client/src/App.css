@@ -18,25 +18,44 @@ body {
   background-image: url(./style/images/backgroundImage.jpg);
   background-size: cover; 
   height: 100vh; 
-  padding: 6rem 5rem; 
+  padding: 6rem; 
 }
 
 .gameContainer {
   position: relative;
-  width: 100%;
+  width: 80%;
   height: 80vh;
-  background-color: aqua;
 }
 
-.player {
+.player-1-panel {
   position: absolute;
   background-color: white; 
   width: 50%; 
   height: 80vh; 
+  float: left; 
+}
+
+.player-2-panel {
+  position: absolute;
+  background-color: aqua; 
+  width: 50%; 
+  height: 80vh; 
+  float: left; 
+  right: 0; 
 }
 
 .dice {
   position: absolute;
-  width: 8rem;
-  height: 8rem;
+  left: 50%;
+  top: 22rem;
+  transform: translateX(-50%);
+  height: 10rem;
+  box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
+}
+
+.holdSum {
+  position: absolute;
+  left: 50%;
+  top: 55rem;
+  transform: translateX(-50%);
 }

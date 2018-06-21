@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; 
 
 
-export default class Player extends Component {
+export default class PlayerTwo extends Component {
   constructor(props) {
     super(props);
     this.state = {}
@@ -15,16 +15,17 @@ export default class Player extends Component {
 
 
   render() {
+    const { currentScore, currentPlayer, totalScore } = this.props; 
     return(
       <div>
       <div>
-        <h1>Player 1</h1>
+          <h1>Player 2</h1>
       </div>
       <div className="totalScore">
-        
+        {totalScore}
       </div>
       <div className="currentScore">
-        
+        {currentScore}
       </div>  
       </div> 
     ) 
