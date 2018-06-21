@@ -72,7 +72,6 @@ class App extends Component {
   }
 
   holdCurrentScore = () => {
-    //It's next player's turn 
     if (this.state.currentPlayer === 'player1') {
       if (this.state.currentScoreOne >= 20 || this.state.totalScoreOne >= 20 ) {
         this.setState({
@@ -86,7 +85,6 @@ class App extends Component {
           currentPlayer: 'player2'
         }); 
       }
-
     } else if (this.state.currentPlayer === 'player2') {
       if (this.state.currentScoreTwo >= 20 || this.state.totalScoreTwo >= 20 ) {
         this.setState({

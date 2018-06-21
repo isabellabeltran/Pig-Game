@@ -68,7 +68,7 @@ body {
 .holdSum {
   position: absolute;
   left: 50%;
-  top: 55rem;
+  top: 45rem;
   transform: translateX(-50%);
   cursor: pointer;
   font-size: 2rem;
@@ -86,7 +86,7 @@ body {
 .totalScore {
   position: absolute;
   top: 20rem; 
-  left: 22rem; 
+  left: 15rem; 
   height: 10rem;
   width: 10rem;
   font-size: 10rem;
@@ -95,9 +95,9 @@ body {
 
 .currentScore {
   position: absolute;
-  top: 45rem; 
+  top: 40rem; 
   border: solid black; 
-  left: 22rem; 
+  left: 15rem; 
   height: 10rem;
   width: 10rem;
   font-size: 3rem;
