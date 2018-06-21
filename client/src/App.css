@@ -58,4 +58,13 @@ body {
   left: 50%;
   top: 55rem;
   transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.newGame {
+  position: absolute;
+  left: 50%;
+  top: 10rem;
+  transform: translateX(-50%);
+  cursor: pointer;
 }

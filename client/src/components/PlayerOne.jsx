@@ -13,18 +13,12 @@ export default class PlayerOne extends Component {
    * accumulated score after hold 
    */
 
-
   render() {
     const { currentScore, currentPlayer, totalScore } = this.props; 
     return(
       <div>
       <div>
-        {/* {
-          currentPlayer === 1 ?  */}
-          <h1>Player 1</h1>
-        {/* //   :
-        //   <h1>Player 2</h1>
-        // } */}
+        <h1>Player 1</h1>
       </div>
       <div className="totalScore">
         {totalScore}

@@ -10,7 +10,8 @@ class App extends Component {
     this.state = {
       currentScore: 0,
       totalScore: 0, 
-      currentPlayer: 'player1'
+      currentPlayer: 'player1',
+      winner: false
     }
   }
 
@@ -27,8 +28,9 @@ class App extends Component {
   }
 
   holdCurrentScore = () => {
+    //It's next player's turn 
     this.setState({
-      totalScore: this.state.currentScore,
+      totalScore: this.state.totalScore + this.state.currentScore,
       currentScore: 0
     }); 
 
@@ -44,19 +46,27 @@ class App extends Component {
           <div className="player-1-panel">
           <PlayerOne currentScore={currentScore} totalScore={totalScore} currentPlayer={currentPlayer}/>
           </div>
-          
           <div className="player-2-panel">
           <PlayerTwo currentScore={currentScore} totalScore={totalScore} currentPlayer={currentPlayer} />
           </div>
+
+          {
+            this.state.winner ? 
+            null
+            :
           <div className="rollTheDice">
             <Dice funcRoll={this.handleRollDice.bind(this)} />
           </div>
-          <div className="holdSum">
-            <button onClick={this.holdCurrentScore}>HOLD</button>
+          }
+
+          <div className="newGame">
+          <h3>New Game</h3>
           </div>
 
+          <div onClick={this.holdCurrentScore} className="holdSum">
+            <h3>HOLD</h3>
+          </div>
         </div>
-
       </div>
     );
   }
