@@ -1,28 +1,42 @@
+*, 
+*::after, 
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; 
+}
+
+html {
+  font-size: 62.5%; 
+}
+
+body {
+  box-sizing: border-box;
+}
+
 .App {
-  text-align: center;
+  background-image: url(./style/images/backgroundImage.jpg);
+  background-size: cover; 
+  height: 100vh; 
+  padding: 6rem 5rem; 
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.gameContainer {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  background-color: aqua;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.player {
+  position: absolute;
+  background-color: white; 
+  width: 50%; 
+  height: 80vh; 
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.dice {
+  position: absolute;
+  width: 8rem;
+  height: 8rem;
 }

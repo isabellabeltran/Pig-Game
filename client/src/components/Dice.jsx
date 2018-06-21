@@ -15,40 +15,41 @@ export default class Dice extends Component {
   }
 
   handleRollDice = () => {
-    let diceNumber = Math.floor(Math.random() * 6) + 1; 
-    if (diceNumber === 1) {
-      this.setState({
-        dice: dice1
-      });
-    } else if (diceNumber === 2) {
-      this.setState({
-        dice: dice2
-      });
-    } else if (diceNumber === 3) {
-      this.setState({
-        dice: dice3
-      });
-    } else if (diceNumber === 4) {
-      this.setState({
-        dice: dice4
-      });
-    } else if (diceNumber === 5) {
-      this.setState({
-        dice: dice5
-      });
-    } else if (diceNumber === 6) {
-      this.setState({
-        dice: dice6
-      });
-    }
+      let diceNumber = Math.floor(Math.random() * 6) + 1; 
+        this.props.funcRoll(diceNumber)
+      if (diceNumber === 1) {
+        this.setState({
+          dice: dice1
+        });
+      } else if (diceNumber === 2) {
+        this.setState({
+          dice: dice2
+        });
+      } else if (diceNumber === 3) {
+        this.setState({
+          dice: dice3
+        });
+      } else if (diceNumber === 4) {
+        this.setState({
+          dice: dice4
+        });
+      } else if (diceNumber === 5) {
+        this.setState({
+          dice: dice5
+        });
+      } else if (diceNumber === 6) {
+        this.setState({
+          dice: dice6
+        });
+      }
   }
 
   render() {
 
     return(
       <div>
-        <div onClick={this.handleRollDice} className="dice">
-          <img src={this.state.dice} />
+        <div>
+          <img className="dice" onClick={this.handleRollDice} src={this.state.dice} />
         </div>
       </div> 
     ) 
